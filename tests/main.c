@@ -5,22 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 10:34:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/02/25 10:47:33 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/01/05 20:27:24 by aroque            #+#    #+#             */
+/*   Updated: 2022/02/25 10:46:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minunit.h"
+#include <fcntl.h>
 #include <ftctemplate.h>
-#include <stdio.h>
+
+int		x = 10;
+int		y = 30;
+
+void	setup(void)
+{
+}
+void	teardown(void)
+{
+}
+
+MU_TEST(example)
+{
+	mu_assert_int_eq(40, plus(x, y));
+	mu_assert_int_eq(-20, minus(x, y));
+}
+
+MU_TEST_SUITE(test_suite_tokens)
+{
+	MU_SUITE_CONFIGURE(&setup, &teardown);
+	MU_RUN_TEST(example);
+}
 
 int	main(void)
 {
-	int	x;
-	int	y;
-
-	x = 10;
-	y = 30;
-	printf("%d + %d = %d\n", x, y, plus(x, y));
-	printf("%d - %d = %d\n", x, y, minus(x, y));
-	return (0);
+	MU_RUN_SUITE(test_suite_tokens);
+	MU_REPORT();
+	return (MU_EXIT_CODE);
 }
