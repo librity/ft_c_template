@@ -8,5 +8,14 @@
 
   "[c]": {
     "editor.defaultFormatter": "keyhr.42-c-format"
+  },
+  "files.associations": {
+    "*.gohtml": "html",
+    "*.s": "plaintext",
+    "ftctemplate_bonus.h": "c",
+    "ftctemplate.h": "c",
+    "defines.h": "c",
+    "chrono": "c",
+    "libft.h": "c"
   }
 }
